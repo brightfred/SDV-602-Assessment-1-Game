@@ -4,7 +4,7 @@ import monster_fight.monster_fight as monster_fight
 
 
 # my initial state before starting the game (global variables) They are all set to false and then will be updated later.
-current_location = "blacksmith_basement"  # i set up the starting location of the player this way because it is very useful for testing specific location's functionalities.
+current_location = "kitchen"  # i set up the starting location of the player this way because it is very useful for testing specific location's functionalities.
 talked_to_prisoner = False
 cleaned_basement = False
 guard_defeated = False
@@ -20,7 +20,7 @@ key_picked = False
 location = {
     "kitchen": {
         "Story": "You are just working hard as usual fixing a kitchen sink drain.",
-        "Next": lambda: move_to("drain"),  # action to move to the next location "drain"
+        "Next": lambda: move_to("drain"),
         "Inventory": lambda: inventory.manage_inventory(),  # lambda makes it so the actions are deferred until they are called.
         "Image": "images/kitchen.png",
     },
@@ -78,9 +78,7 @@ location = {
             if not monster_fight.is_monster_defeated("Goomba")
             else (
                 "You have already received the sword."
-                if inventory.has_item(
-                    inventory.item_names[0]
-                )  # Updated to use the item_names tuple for sword
+                if inventory.has_item(inventory.item_names[0])
                 else inventory.receive_sword()
             )
         ),
@@ -107,9 +105,7 @@ location = {
         "Story": "Hi hero, I heard what happened! I don't have much but here, take this at least. Please save our princess.",
         "Receive": lambda: (
             "You have already received the potion."
-            if inventory.has_item(
-                inventory.item_names[1]
-            )  # Updated to use the item_names tuple for potion
+            if inventory.has_item(inventory.item_names[1])
             else inventory.receive_potion()
         ),
         "Leave": lambda: move_to("town_center"),
@@ -148,9 +144,7 @@ location = {
             if not monster_fight.is_monster_defeated("Castle Guard")
             else (
                 "You already have the key."
-                if inventory.has_item(
-                    inventory.item_names[2]
-                )  # Updated to use the item_names tuple for key
+                if inventory.has_item(inventory.item_names[2])
                 else inventory.pick_up_key()
             )
         ),
@@ -158,9 +152,7 @@ location = {
         "Image": "images/castle_entrance.png",
         "Use key": lambda: (
             move_to("bowser_fight")
-            if inventory.has_item(
-                inventory.item_names[2]
-            )  # Updated to use the item_names tuple for key
+            if inventory.has_item(inventory.item_names[2])
             else "You need a key to enter."
         ),
         "Inventory": lambda: inventory.manage_inventory(),
@@ -168,15 +160,12 @@ location = {
     },
     "east_wall": {
         "Story": "You are at the east wall of the castle. You see a golden rock and a special pipe locked.",
-        # When investigating, the key should be picked up and added to the inventory
         "Investigate": lambda: (
             "You have already picked up the key."
-            if inventory.has_item(
-                inventory.item_names[2]
-            )  # Updated to use the item_names tuple for key
+            if inventory.has_item(inventory.item_names[2])
             else inventory.pick_up_key()
         ),
-        # Ensure the player can only use the key if it has been picked up
+        # the player can only use the key if it has been picked up
         "Use key": lambda: (
             move_to("bowser_fight")
             if inventory.has_item(inventory.item_names[2])
