@@ -96,7 +96,7 @@ location = {
             "You already defeated the Goomba"
             if monster_fight.is_monster_defeated("Goomba")
             else monster_fight.initiate_fight("Goomba")
-            # call the initiate fight function from the monster_fight.py file to start the fight with the Goomba
+            # call the initiate fight from the monster_fight.py file to start the fight with the Goomba
         ),
         "Inventory": lambda: inventory.manage_inventory(),
         "Image": "images/blacksmith_basement.png",
@@ -137,7 +137,7 @@ location = {
             "The Castle Guard is already defeated."
             if monster_fight.is_monster_defeated("Castle Guard")
             else monster_fight.initiate_fight("Castle Guard")
-        ),  # The castle guard comes from the monster_fight.py file where the monster attributes are set.
+        ),
         "Leave": lambda: move_to("town_gate"),
         "Steal key": lambda: (
             "You need to defeat the guard first."

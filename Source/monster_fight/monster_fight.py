@@ -84,7 +84,7 @@ def player_attack():
 # The player's health is reduced by the damage amount after the attack
 def monster_attack():
     damage = RND.randint(monster_attack_power - 2, monster_attack_power + 2)
-    status.decrease_health(damage)
+    status.update_health(-damage)
     return f"The monster attacks you, dealing {damage} damage."
 
 
