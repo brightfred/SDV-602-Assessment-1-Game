@@ -30,7 +30,8 @@ def has_item(item):
 
 
 # Use an item from the inventory
-#  Check is to see if the key is in the inventory and if it is he can move to the bowser fight(was getting error with the lambda function in location)
+#  Check is to see if the key is in the inventory and if it is he can move to the bowser fight
+# (was getting error with the lambda function in location)
 #  If the potion is in the inventory he can use it to heal 50 health
 def use_item(item):
     if item == item_names[1] and item in inventory_items:  # Use potion
@@ -92,3 +93,10 @@ def pick_up_key():
         key_picked = True
         return collect_item(item_names[2])
     return "You have already picked up the key."
+
+
+# Test the inventory module on receiving the sword and potion
+if __name__ == "__main__":
+    print("Inventory Module Test")
+    print(receive_sword())
+    print(receive_potion())

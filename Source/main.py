@@ -33,7 +33,7 @@ def create_game_window():
                         ),
                     ],
                     # font of the text box(Any is the font style and 14 is the size) https://pysimplegui.readthedocs.io/en/latest/call%20reference/#text-element
-                    # this is for the key of the text box meaning it is the output of the text box.
+                    # key of the text box = the output of the text box.
                     [
                         sg.Text("Enter command", font="Any 14"),
                         sg.Input(key="-IN-", size=(20, 1), font="Any 14"),

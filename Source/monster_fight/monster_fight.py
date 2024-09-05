@@ -118,3 +118,10 @@ def fight():
 # True if the monster is defeated , False otherwise
 def is_monster_defeated(monster_name):
     return monster_defeated_status.get(monster_name, False)
+
+
+# Testing the fight module against a Goomba
+if __name__ == "__main__":
+    print("Monster Fight module")
+    initiate_fight("Goomba")
+    print(fight())

@@ -34,3 +34,10 @@ def increase_attack(amount):
 # i didnt have time to add more depth with a defense system in my game like defend and a def stat and armor
 def player_current_status():
     return f"Health: {get_health()} | Attack Power: {get_attack_power()}"
+
+
+# Test the status module
+if __name__ == "__main__":
+    print("Status Module Test")
+    print(increase_attack(5))
+    print(update_health(-30))

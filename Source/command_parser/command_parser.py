@@ -276,3 +276,8 @@ def game_play(command):
 
     else:
         return f"Can't {command} \n\n{get_available_commands()}"
+
+
+if __name__ == "__main__":
+    print("Command module test")
+    print(get_current_story())
