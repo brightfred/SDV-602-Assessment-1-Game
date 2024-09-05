@@ -7,13 +7,9 @@ monster_health = 0
 monster_attack_power = 0
 current_monster = ""
 
-# Dictionary to track which monsters have been defeated
-# key = monster name, value = defeated (True/False)
-monster_defeated_status = {
-    "Goomba": False,
-    "Castle Guard": False,
-    "Bowser": False,
-}
+
+# Set to track which monsters have been defeated
+monster_defeated_status = set()
 
 
 # health and attack power for Goomba in the blacksmith basement, Castle Guard in the castle, and Bowser in the final boss room
@@ -57,7 +53,6 @@ def set_monster_stat(health, attack_power, monster_name):
     monster_health = health
     monster_attack_power = attack_power
     current_monster = monster_name
-    monster_defeated_status[monster_name] = False
 
 
 # Player attack monster
@@ -90,13 +85,9 @@ def monster_attack():
 # If the monster is Bowser and is defeated, the player is moved to the game_over location
 # Otherwise, the fight continues until either the player or the monster is defeated
 def fight():
-    global monster_defeated_status
-
     player_result = player_attack()
     if monster_health <= 0:
-        monster_defeated_status[current_monster] = (
-            True  # Update monster defeated status
-        )
+        monster_defeated_status.add(current_monster)  # Add defeated monster to the set
         # Check if Bowser is the defeated monster to end the game
         if current_monster == "Bowser":
             return parser.move_to("game_over") + "\nThe monster is defeated! You win!"
@@ -115,9 +106,9 @@ def fight():
 
 
 # Checks if a specific monster has been defeated
-# True if the monster is defeated , False otherwise
+# updates the monster_defeated_status set
 def is_monster_defeated(monster_name):
-    return monster_defeated_status.get(monster_name, False)
+    return monster_name in monster_defeated_status
 
 
 # Testing the fight module against a Goomba
