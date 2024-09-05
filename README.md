@@ -5,14 +5,15 @@ My game is a scene-to-scene made with python where the player where the player g
 
 ## My game features
 
-**Multiple Locations** 
-**Combat System** 
-**Item and inventory** 
-**A final Boss** 
+Multiple Locations,
+Combat System,
+Item and inventory,
+A final Boss 
 
 ## Requirements
 
-Python 3
+Python 3 ,
+
 A terminal or command-line interface
 
 ## Installation
