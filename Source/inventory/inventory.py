@@ -57,7 +57,7 @@ def manage_inventory():
     commands_text = (
         f"\nAvailable Commands: {' or '.join(available_commands)}"
         if available_commands
-        else "No item"
+        else ""
     )
     return inventory_text + commands_text
 
