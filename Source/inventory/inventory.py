@@ -45,14 +45,16 @@ def use_item(item):
         return f"You do not have a {item}."
 
 
-# Manage inventory and list of available command based on items in the inventory
+# Manage inventory using a list comprehension to show available commands
+#  (use sword or use potion)
+# iterate over the item names and check if the item is in the inventory
+# if it is, add the item name to the available commands list
+# [i] is the index of the item name in the item_names tuple (0 for sword, 1 for potion, 2 for key)
+# list comprehension: https://www.w3schools.com/python/python_lists_comprehension.asp
 def manage_inventory():
-    available_commands = []
-
-    if has_item(item_names[1]):  # Check if he has the potion
-        available_commands.append("Use potion")
-    if has_item(item_names[2]):  # Check if he has the key
-        available_commands.append("Use key")  # Add the key to the available commands
+    available_commands = [
+        f"Use {item_names[i]}" for i in range(1, 3) if has_item(item_names[i])
+    ]
 
     inventory_text = show_inventory()
     commands_text = (
@@ -64,7 +66,6 @@ def manage_inventory():
 
 
 # Show the player's current inventory
-# I call this function in the manage_inventory function
 def show_inventory():
     return f"Inventory: {', '.join(inventory_items) if inventory_items else 'Inventory is empty'}"
 
