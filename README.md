@@ -19,7 +19,7 @@ A terminal or command-line interface
 
 1. Clone this repository to your local machine:
 
-git clone https://github.com/brightfred/SDV-602-Assessment-1-Game.git
+git clone https://github.com/brightfred/SDV602_Milestone_1_Frederick_Laroche.git
 
 2. Navigate to the source directory:
 
